@@ -1,0 +1,296 @@
+  .nexus-build-selector {
+    background: var(--nexus-bg);
+    color: var(--nexus-text);
+  }
+
+  .nexus-build-selector__wrap {
+    width: min(150rem, calc(100% - 4rem));
+    margin: 0 auto;
+    padding: 0 0 clamp(3rem, 6vw, 7rem);
+  }
+
+  .nexus-build-selector__box {
+    padding: clamp(2rem, 4vw, 4rem);
+    background: var(--nexus-panel);
+    border: 1px solid var(--nexus-border);
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .nexus-build-selector__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--nexus-border);
+    padding-bottom: 2.5rem;
+  }
+
+  .nexus-build-selector__eyebrow {
+    margin: 0 0 1rem;
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nexus-build-selector h2 {
+    margin: 0;
+    font-size: clamp(3.2rem, 5vw, 5.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--nexus-white);
+    text-transform: uppercase;
+  }
+
+  .nexus-build-selector__header p {
+    max-width: 48rem;
+    margin: 0;
+    color: var(--nexus-text-muted);
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  .nexus-build-selector__tabs {
+    display: grid;
+  }
+
+  .nexus-build-selector__tabs input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nexus-build-selector__labels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .nexus-build-selector__label {
+    display: grid;
+    gap: 0.4rem;
+    min-height: 7.2rem;
+    padding: 1.5rem;
+    background: transparent;
+    border: 1px solid var(--nexus-border);
+    color: var(--nexus-text);
+    cursor: pointer;
+    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nexus-build-selector__label strong {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--nexus-white);
+  }
+
+  .nexus-build-selector__label span {
+    color: var(--nexus-text-muted);
+    font-size: 1.2rem;
+    font-family: var(--font-mono-family);
+  }
+
+  #laptop-air-tab:checked ~ .nexus-build-selector__labels label[for="laptop-air-tab"],
+  #mini-tab:checked ~ .nexus-build-selector__labels label[for="mini-tab"],
+  #esports-tab:checked ~ .nexus-build-selector__labels label[for="esports-tab"],
+  #prime-1-tab:checked ~ .nexus-build-selector__labels label[for="prime-1-tab"],
+  #laptop-tab:checked ~ .nexus-build-selector__labels label[for="laptop-tab"],
+  #prime-2-tab:checked ~ .nexus-build-selector__labels label[for="prime-2-tab"],
+  #prime-3-tab:checked ~ .nexus-build-selector__labels label[for="prime-3-tab"] {
+    background: var(--nexus-accent);
+    border-color: var(--nexus-accent);
+    color: #000000;
+  }
+
+  #laptop-air-tab:checked ~ .nexus-build-selector__labels label[for="laptop-air-tab"] strong,
+  #mini-tab:checked ~ .nexus-build-selector__labels label[for="mini-tab"] strong,
+  #esports-tab:checked ~ .nexus-build-selector__labels label[for="esports-tab"] strong,
+  #prime-1-tab:checked ~ .nexus-build-selector__labels label[for="prime-1-tab"] strong,
+  #laptop-tab:checked ~ .nexus-build-selector__labels label[for="laptop-tab"] strong,
+  #prime-2-tab:checked ~ .nexus-build-selector__labels label[for="prime-2-tab"] strong,
+  #prime-3-tab:checked ~ .nexus-build-selector__labels label[for="prime-3-tab"] strong {
+    color: #000000;
+  }
+
+  #laptop-air-tab:checked ~ .nexus-build-selector__labels label[for="laptop-air-tab"] span,
+  #mini-tab:checked ~ .nexus-build-selector__labels label[for="mini-tab"] span,
+  #esports-tab:checked ~ .nexus-build-selector__labels label[for="esports-tab"] span,
+  #prime-1-tab:checked ~ .nexus-build-selector__labels label[for="prime-1-tab"] span,
+  #laptop-tab:checked ~ .nexus-build-selector__labels label[for="laptop-tab"] span,
+  #prime-2-tab:checked ~ .nexus-build-selector__labels label[for="prime-2-tab"] span,
+  #prime-3-tab:checked ~ .nexus-build-selector__labels label[for="prime-3-tab"] span {
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .nexus-build-selector__panel {
+    display: none;
+    grid-template-columns: minmax(0, 1.1fr) minmax(32rem, 0.9fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    align-items: center;
+    min-height: 42rem;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--nexus-border);
+  }
+
+  #laptop-air-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--laptop-air,
+  #mini-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--mini,
+  #esports-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--esports,
+  #prime-1-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--prime-1,
+  #laptop-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--laptop,
+  #prime-2-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--prime-2,
+  #prime-3-tab:checked ~ .nexus-build-selector__panels .nexus-build-selector__panel--prime-3 {
+    display: grid;
+  }
+
+  .nexus-build-selector__media {
+    min-height: 34rem;
+    background:
+      radial-gradient(circle at 72% 28%, rgba(198, 255, 0, 0.1), transparent 40%),
+      var(--build-image) center / contain no-repeat,
+      rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--nexus-border);
+  }
+
+  .nexus-build-selector__tag {
+    display: inline-flex;
+    width: max-content;
+    margin-bottom: 1.2rem;
+    padding: 0.4rem 1rem;
+    background: var(--nexus-accent);
+    color: #000000;
+    font-family: var(--font-mono-family);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .nexus-build-selector__content h3 {
+    margin: 0;
+    font-size: clamp(3rem, 4vw, 4.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--nexus-white);
+  }
+
+  .nexus-build-selector__content p {
+    margin: 1.5rem 0;
+    color: var(--nexus-text-muted);
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  .nexus-build-selector__price {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .nexus-build-selector__price strong {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+  }
+
+  .nexus-build-selector__price span {
+    color: var(--nexus-text-muted);
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+  .nexus-build-selector__specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nexus-build-selector__specs li {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--nexus-border);
+    font-family: var(--font-mono-family);
+    font-size: 1.2rem;
+    color: var(--nexus-text);
+  }
+
+  .nexus-build-selector__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .nexus-build-selector__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 5rem;
+    padding: 0 2.5rem;
+    background: var(--nexus-accent);
+    color: #000000;
+    font-family: var(--font-heading-family);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 4px 0px 0px #000000;
+    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nexus-build-selector__button:hover {
+    background: var(--nexus-white);
+    border-color: var(--nexus-white);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--nexus-accent);
+  }
+
+  .nexus-build-selector__button--secondary {
+    background: transparent;
+    border: 1px solid var(--nexus-border);
+    color: var(--nexus-white);
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  .nexus-build-selector__button--secondary:hover {
+    background: var(--nexus-border);
+    border-color: var(--nexus-white);
+    color: var(--nexus-white);
+    box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.1);
+  }
+
+  @media screen and (max-width: 949px) {
+    .nexus-build-selector__header,
+    .nexus-build-selector__panel {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .nexus-build-selector__labels {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .nexus-build-selector__wrap {
+      width: min(100% - 3rem, 70rem);
+    }
+
+    .nexus-build-selector__labels,
+    .nexus-build-selector__specs,
+    .nexus-build-selector__actions {
+      grid-template-columns: 1fr;
+      display: grid;
+    }
+
+    .nexus-build-selector__media {
+      min-height: 26rem;
+    }
+  }

@@ -1,0 +1,61 @@
+{{ 'section-nexus-page-hero.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-page-hero{% if request.page_type == 'product' %} nexus-page-hero--product{% endif %}">
+  <div class="nexus-page-hero__wrap">
+    {%- if request.page_type == 'product' -%}
+      {%- liquid
+        assign breadcrumb_collection_url = routes.all_products_collection_url
+        assign breadcrumb_collection_title = 'Collection'
+        if collection
+          assign breadcrumb_collection_url = collection.url
+          assign breadcrumb_collection_title = collection.title
+        elsif product.collections.first
+          assign breadcrumb_collection_url = product.collections.first.url
+          assign breadcrumb_collection_title = product.collections.first.title
+        endif
+      -%}
+      <nav class="nexus-page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ breadcrumb_collection_url }}">{{ breadcrumb_collection_title | escape }}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ product.title | escape }}</span>
+      </nav>
+    {%- endif -%}
+    <p class="nexus-page-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1>{{ section.settings.heading }}</h1>
+    <p class="nexus-page-hero__text">{{ section.settings.text }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus page hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "NexusLab"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Computer setups built for real work."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Explore custom PC builds, laptop bundles, peripherals, and build support from NexusLab."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nexus page hero"
+    }
+  ]
+}
+{% endschema %}

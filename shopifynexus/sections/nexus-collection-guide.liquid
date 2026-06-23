@@ -1,0 +1,44 @@
+{{ 'section-nexus-collection-guide.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-collection-guide">
+  <div class="nexus-collection-guide__wrap">
+    <div class="nexus-collection-guide__top">
+      <div>
+        <p class="nexus-collection-guide__eyebrow">NexusLab collection</p>
+        <h1>Shop bundles, laptops, parts, and peripherals.</h1>
+      </div>
+      <p>
+        Use the chips to move fast: compare bundle PCs, browse productive laptops,
+        or shop parts and accessories for your setup.
+      </p>
+    </div>
+
+    <nav class="nexus-collection-guide__chips" aria-label="Collection shortcuts">
+      <a href="{{ routes.all_products_collection_url }}">All</a>
+      <a href="#nexus-build-selector">Bundle PCs</a>
+      <a href="#product-grid">Laptops</a>
+      <a href="#product-grid">Parts</a>
+      <a href="#product-grid">Peripherals</a>
+      <a href="{{ pages.contact.url | default: '/pages/contact' }}">Need help?</a>
+    </nav>
+
+    <div class="nexus-collection-guide__steps">
+      <div class="nexus-collection-guide__step"><span>01</span> Pick a category</div>
+      <div class="nexus-collection-guide__step"><span>02</span> Sort by price or newest</div>
+      <div class="nexus-collection-guide__step"><span>03</span> Add products to cart</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus collection guide",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus collection guide"
+    }
+  ]
+}
+{% endschema %}

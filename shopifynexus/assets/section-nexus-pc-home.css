@@ -1,0 +1,608 @@
+  .nexus-home-minimal {
+    background: var(--nexus-bg);
+    color: var(--nexus-text);
+  }
+
+  .nexus-home-minimal__wrap {
+    width: min(144rem, calc(100% - 4rem));
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .nexus-home-minimal__hero {
+    padding: clamp(4rem, 7vw, 8rem) 0;
+    border-bottom: 1px solid var(--nexus-border);
+  }
+
+  .nexus-home-minimal__hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(36rem, 1fr);
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: center;
+  }
+
+  .nexus-home-minimal h1 {
+    max-width: 70rem;
+    margin: 0;
+    color: var(--nexus-white);
+    font-family: var(--font-heading-family);
+    font-size: clamp(4rem, 6vw, 7.6rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__subtext {
+    max-width: 58rem;
+    margin: 2.6rem 0 0;
+    color: var(--nexus-text-muted);
+    font-size: clamp(1.6rem, 1.8vw, 2.2rem);
+    line-height: 1.5;
+  }
+
+  .nexus-home-minimal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .nexus-home-minimal__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5.2rem;
+    padding: 0 3.2rem;
+    border: 1px solid var(--nexus-accent);
+    background: var(--nexus-accent);
+    color: #000000;
+    font-family: var(--font-heading-family);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 4px 0px 0px #000000;
+    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .nexus-home-minimal__button:hover {
+    background: var(--nexus-white);
+    border-color: var(--nexus-white);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--nexus-accent);
+  }
+
+  .nexus-home-minimal__button--secondary {
+    background: transparent;
+    border-color: var(--nexus-border);
+    color: var(--nexus-white);
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  .nexus-home-minimal__button--secondary:hover {
+    background: var(--nexus-border);
+    border-color: var(--nexus-white);
+    color: var(--nexus-white);
+    box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.1);
+  }
+
+  .nexus-home-minimal__hero-image-wrap {
+    border: 1.5px solid var(--nexus-border);
+    background: #ffffff;
+    box-shadow: 6px 6px 0px 0px #000000;
+    overflow: hidden;
+    display: block;
+    line-height: 0;
+    width: 100%;
+  }
+
+  .nexus-home-minimal__hero-img {
+    width: 100%;
+    aspect-ratio: 1.35;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .nexus-home-minimal__section {
+    padding: clamp(4rem, 6vw, 7rem) 0;
+    border-bottom: 1px solid var(--nexus-border);
+  }
+
+  .nexus-home-minimal__heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .nexus-home-minimal__eyebrow {
+    margin: 0 0 1rem;
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .nexus-home-minimal h2 {
+    margin: 0;
+    color: var(--nexus-white);
+    font-family: var(--font-heading-family);
+    font-size: clamp(3rem, 4.2vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__view-all {
+    color: var(--nexus-text-muted);
+    font-family: var(--font-mono-family);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .nexus-home-minimal__view-all:hover {
+    color: var(--nexus-accent);
+  }
+
+  .nexus-home-minimal__carousel {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .nexus-home-minimal__carousel-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .nexus-home-minimal__carousel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 1.5px solid var(--nexus-border);
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    font-family: var(--font-mono-family);
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+
+  .nexus-home-minimal__carousel-button:hover {
+    background: var(--nexus-accent);
+  }
+
+  .nexus-home-minimal__carousel-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .nexus-home-minimal__grid {
+    display: flex;
+    gap: 1.6rem;
+    padding: 0 0 1rem;
+  }
+
+  .nexus-home-minimal__card {
+    position: relative;
+    display: grid;
+    flex: 0 0 calc((100% - 3.2rem) / 3);
+    gap: 1rem;
+    color: var(--nexus-text);
+    background: var(--nexus-panel);
+    border: 1px solid var(--nexus-border);
+    padding: 1.4rem;
+    text-decoration: none;
+    scroll-snap-align: start;
+    transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nexus-home-minimal__card:hover {
+    border-color: var(--nexus-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(198, 255, 0, 0.08);
+  }
+
+  .nexus-home-minimal__card-media {
+    width: 100%;
+    height: clamp(15rem, 19vw, 22rem);
+    object-fit: cover;
+    display: block;
+    background: #1a1a1f;
+    border: 1px solid var(--nexus-border);
+  }
+
+  .nexus-home-minimal__badge {
+    position: absolute;
+    top: 2.2rem;
+    right: 2.2rem;
+    padding: 0.4rem 0.8rem;
+    background: var(--nexus-accent);
+    color: #000000;
+    font-family: var(--font-mono-family);
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__tier {
+    width: max-content;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--nexus-text);
+    font-family: var(--font-mono-family);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__card h3 {
+    margin: 0;
+    font-size: clamp(1.65rem, 1.6vw, 2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--nexus-white);
+  }
+
+  .nexus-home-minimal__price {
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+    font-weight: 700;
+    font-size: 1.65rem;
+  }
+
+  .nexus-home-minimal__details {
+    margin: 0;
+    color: var(--nexus-text-muted);
+    font-size: 1.28rem;
+    line-height: 1.45;
+  }
+
+  .nexus-home-minimal__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nexus-home-minimal__specs li {
+    padding: 0.35rem 0.7rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--nexus-border);
+    font-family: var(--font-mono-family);
+    font-size: 1rem;
+    color: var(--nexus-text-muted);
+  }
+
+  .nexus-home-minimal__category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .nexus-home-minimal__category {
+    display: grid;
+    gap: 1.2rem;
+    padding: 1.6rem;
+    background: var(--nexus-panel);
+    border: 1px solid var(--nexus-border);
+    text-decoration: none;
+    color: var(--nexus-text);
+    transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nexus-home-minimal__category:hover {
+    border-color: var(--nexus-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(198, 255, 0, 0.08);
+  }
+
+  .nexus-home-minimal__category img {
+    width: 100%;
+    height: clamp(12rem, 16vw, 18rem);
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--nexus-border);
+  }
+
+  .nexus-home-minimal__category h3 {
+    margin: 0;
+    font-size: 2.4rem;
+    color: var(--nexus-white);
+  }
+
+  .nexus-home-minimal__category p {
+    margin: 0;
+    color: var(--nexus-text-muted);
+    font-size: 1.4rem;
+    line-height: 1.45;
+  }
+
+  .nexus-home-minimal__bestseller {
+    display: grid;
+    grid-template-columns: minmax(28rem, 0.92fr) minmax(32rem, 1.08fr);
+    border: 1.5px solid var(--nexus-border);
+    background: #000000;
+    overflow: hidden;
+  }
+
+  .nexus-home-minimal__bestseller-product {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: clamp(1.8rem, 3vw, 3rem);
+    padding: clamp(2.4rem, 5vw, 5rem);
+    background: #f3f6fb;
+    color: #000000;
+    text-align: center;
+  }
+
+  .nexus-home-minimal__bestseller-product img {
+    width: min(100%, 48rem);
+    height: clamp(24rem, 34vw, 42rem);
+    object-fit: contain;
+    border: 1.5px solid #000000;
+    background: #f6f8fc;
+    display: block;
+  }
+
+  .nexus-home-minimal__bestseller-product h2 {
+    max-width: 58rem;
+    color: #000000 !important;
+    font-size: clamp(2.8rem, 4.2vw, 5.2rem);
+    line-height: 0.96;
+  }
+
+  .nexus-home-minimal__bestseller-price {
+    color: #000000;
+    font-family: var(--font-mono-family);
+    font-size: clamp(2rem, 2.4vw, 3rem);
+    font-weight: 900;
+  }
+
+  .nexus-home-minimal__bestseller-copy {
+    display: grid;
+    align-content: center;
+    gap: 2.4rem;
+    padding: clamp(3rem, 6vw, 7rem);
+    color: #ffffff;
+  }
+
+  .nexus-home-minimal__bestseller-copy .nexus-home-minimal__eyebrow {
+    width: 100%;
+    max-width: 56rem;
+  }
+
+  .nexus-home-minimal__bestseller-copy h2 {
+    max-width: 72rem;
+    color: #ffffff !important;
+    font-size: clamp(3rem, 4.8vw, 5.8rem);
+    line-height: 0.95;
+  }
+
+  .nexus-home-minimal__bestseller-copy p {
+    max-width: 68rem;
+    margin: 0;
+    color: #cbd5e1;
+    font-size: clamp(1.6rem, 1.8vw, 2rem);
+    line-height: 1.55;
+  }
+
+  .nexus-home-minimal__spec-table {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .nexus-home-minimal__spec-row {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: #111318;
+    font-family: var(--font-mono-family);
+    font-size: clamp(1.2rem, 1.35vw, 1.55rem);
+  }
+
+  .nexus-home-minimal__spec-row dt {
+    color: #cbd5e1;
+  }
+
+  .nexus-home-minimal__spec-row dd {
+    margin: 0;
+    color: var(--nexus-accent);
+    font-weight: 900;
+    text-align: right;
+  }
+
+  .nexus-home-minimal__review {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding-top: 2.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .nexus-home-minimal__stars {
+    color: var(--nexus-accent);
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nexus-home-minimal__review blockquote {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: clamp(1.45rem, 1.65vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .nexus-home-minimal__review figcaption {
+    color: #8d96a7;
+    font-family: var(--font-mono-family);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__experience {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .nexus-home-minimal__experience-main,
+  .nexus-home-minimal__recommendation {
+    border: 1.5px solid var(--nexus-border);
+    background: #ffffff;
+    padding: clamp(2.4rem, 4vw, 4rem);
+  }
+
+  .nexus-home-minimal__experience-main h2,
+  .nexus-home-minimal__recommendation h3 {
+    color: #000000 !important;
+  }
+
+  .nexus-home-minimal__experience-main p,
+  .nexus-home-minimal__recommendation p {
+    margin: 1.4rem 0 0;
+    color: var(--nexus-text-muted);
+    font-size: 1.55rem;
+    line-height: 1.55;
+  }
+
+  .nexus-home-minimal__experience-steps {
+    display: grid;
+    gap: 1rem;
+    margin: 2.4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nexus-home-minimal__experience-steps li,
+  .nexus-home-minimal__recommendation-option {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.4rem;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid var(--nexus-border);
+    font-family: var(--font-mono-family);
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .nexus-home-minimal__experience-steps span,
+  .nexus-home-minimal__recommendation-option span {
+    color: var(--nexus-accent-dark);
+  }
+
+  .nexus-home-minimal__recommendation {
+    display: grid;
+    align-content: space-between;
+    gap: 2rem;
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .nexus-home-minimal__recommendation h3 {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: clamp(2.8rem, 3vw, 4rem);
+    line-height: 1;
+  }
+
+  .nexus-home-minimal__recommendation p {
+    color: #cbd5e1;
+  }
+
+  .nexus-home-minimal__recommendation-options {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .nexus-home-minimal__recommendation-option {
+    border-color: rgba(255, 255, 255, 0.24);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 1099px) {
+    .nexus-home-minimal__hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .nexus-home-minimal__grid {
+      display: flex;
+    }
+
+    .nexus-home-minimal__card {
+      flex-basis: calc((100% - 2rem) / 2);
+    }
+
+    .nexus-home-minimal__category-grid,
+    .nexus-home-minimal__experience,
+    .nexus-home-minimal__bestseller {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .nexus-home-minimal__wrap {
+      width: min(100% - 3rem, 70rem);
+    }
+
+    .nexus-home-minimal h1 {
+      font-size: clamp(3.4rem, 13vw, 5.4rem);
+    }
+
+    .nexus-home-minimal__heading-row,
+    .nexus-home-minimal__actions {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .nexus-home-minimal__card {
+      flex-basis: min(78vw, 30rem);
+    }
+
+    .nexus-home-minimal__card-media {
+      height: 15.5rem;
+    }
+
+    .nexus-home-minimal__category-grid,
+    .nexus-home-minimal__experience,
+    .nexus-home-minimal__bestseller {
+      grid-template-columns: 1fr;
+    }
+
+    .nexus-home-minimal__bestseller-product img {
+      height: 26rem;
+    }
+
+    .nexus-home-minimal__spec-row {
+      grid-template-columns: 1fr;
+    }
+
+    .nexus-home-minimal__spec-row dd {
+      text-align: left;
+    }
+  }

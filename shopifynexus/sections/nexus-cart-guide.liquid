@@ -1,0 +1,32 @@
+{{ 'section-nexus-cart-guide.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-cart-guide">
+  <div class="nexus-cart-guide__wrap">
+    <div>
+      <h1>Review your order summary.</h1>
+      <p>
+        Check line items, quantities, bundle specs, accessories, shipping, discounts,
+        and total before placing your NexusLab order.
+      </p>
+      <div class="nexus-cart-guide__checkout-note">Coupon codes and secure payment are handled during checkout.</div>
+    </div>
+    <ul class="nexus-cart-guide__list">
+      <li>Line items show selected PC, laptop, parts, and accessories</li>
+      <li>Quantity controls and remove actions are available in the cart</li>
+      <li>Compatibility review is included for complete build bundles</li>
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus cart guide",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus cart guide"
+    }
+  ]
+}
+{% endschema %}

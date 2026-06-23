@@ -1,0 +1,241 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+
+{{ 'section-nexus-pc-product.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-pc-product">
+  <div class="nexus-pc-product__wrap">
+    <div class="nexus-pc-product__hero">
+      <div class="nexus-pc-product__media" role="img" aria-label="RGB gaming PC tower with full desk setup"></div>
+
+      <div>
+        <p class="nexus-pc-product__eyebrow">Bundle detail page</p>
+        <h1>NexusLab Prime build details</h1>
+        <p class="nexus-pc-product__text">
+          Compare named PC build bundles, select the tier that matches your workload,
+          then review the full parts, included accessories, and recommended upgrade path.
+        </p>
+
+        <div class="nexus-pc-product__price">
+          <strong>From ₱18,500</strong>
+          <span>Budget, Starter, Performance, Pro Workstation, and Laptop bundles</span>
+        </div>
+
+        <div class="nexus-pc-product__actions">
+          <a class="nexus-pc-product__button" href="{{ routes.all_products_collection_url }}">Back to build selector</a>
+          <a class="nexus-pc-product__button nexus-pc-product__button--secondary" href="{{ routes.cart_url }}">View cart</a>
+        </div>
+
+        <ul class="nexus-pc-product__specs">
+          <li>PC tower or laptop</li>
+          <li>Monitor options</li>
+          <li>Keyboard and mouse</li>
+          <li>Assembly and testing</li>
+          <li>Thermal tuning</li>
+          <li>Upgrade guidance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nexus-pc-product__bundle-table">
+      <article class="nexus-pc-product__bundle" id="laptop-air">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Student & Study</p>
+          <h2>NexusBook Air</h2>
+        </div>
+        <div>
+          <p>Super-portable laptop bundle with external monitor path, slim sleeve, and wireless mouse.</p>
+          <ul>
+            <li>Ryzen 3 / Core i3</li>
+            <li>Radeon Graphics</li>
+            <li>8GB LPDDR5</li>
+            <li>256GB NVMe SSD</li>
+            <li>Slim Technical Carry Case</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select NexusBook Air</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="mini">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Compact Office</p>
+          <h2>NexusLab Mini</h2>
+        </div>
+        <div>
+          <p>Space-saving micro PC desktop bundle with mouse, keyboard, and compact cooling.</p>
+          <ul>
+            <li>Core i5 / Ryzen 5</li>
+            <li>Intel Iris Xe / Radeon</li>
+            <li>16GB Dual-Channel</li>
+            <li>512GB PCIe Gen4</li>
+            <li>Vertical Desk Stand</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select NexusLab Mini</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="esports">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Esports Gaming</p>
+          <h2>NexusLab Esports</h2>
+        </div>
+        <div>
+          <p>High frame-rate gaming tower bundle optimized for CS2, Valorant, Dota 2, and Apex Legends.</p>
+          <ul>
+            <li>Ryzen 5 5600X</li>
+            <li>Radeon RX 6600 8GB</li>
+            <li>16GB DDR4 3600MHz</li>
+            <li>512GB NVMe SSD</li>
+            <li>650W 80+ Bronze PSU</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select NexusLab Esports</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="prime-1">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Starter gaming</p>
+          <h2>NexusLab Prime 1</h2>
+        </div>
+        <div>
+          <p>Starter custom PC bundle for 1080p gaming, online class, office work, and daily streaming.</p>
+          <ul>
+            <li>Ryzen 5 / Core i5</li>
+            <li>RTX 4060 class 8GB</li>
+            <li>16GB DDR5 memory</li>
+            <li>1TB NVMe Gen4 SSD</li>
+            <li>24-inch 144Hz IPS option</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select Prime 1</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="laptop-pro">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Laptop Pro bundle</p>
+          <h2>NexusBook Dock Pro</h2>
+        </div>
+        <div>
+          <p>High-end portable laptop bundle with dual-channel RAM, external display dock, and developer keyboard.</p>
+          <ul>
+            <li>Core i7 / Ryzen 7</li>
+            <li>32GB High-Speed RAM</li>
+            <li>1TB NVMe SSD</li>
+            <li>USB-C Dual-HDMI Dock</li>
+            <li>27-inch 1440p IPS Monitor</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select Laptop</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="prime-2">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Performance</p>
+          <h2>NexusLab Prime 2</h2>
+        </div>
+        <div>
+          <p>Balanced high-performance bundle for 1440p gaming, streaming, productivity, and creator work.</p>
+          <ul>
+            <li>Ryzen 7 / Core i7</li>
+            <li>RTX 4070 Super 12GB</li>
+            <li>32GB DDR5 Dual Channel</li>
+            <li>2TB NVMe Gen4 SSD</li>
+            <li>27-inch 165Hz IPS option</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select Prime 2</a>
+      </article>
+
+      <article class="nexus-pc-product__bundle" id="prime-3">
+        <div>
+          <p class="nexus-pc-product__eyebrow">Pro workstation</p>
+          <h2>NexusLab Prime 3</h2>
+        </div>
+        <div>
+          <p>Premium workstation bundle for editing, rendering, 3D, local AI, development, and heavy multitasking.</p>
+          <ul>
+            <li>Ryzen 9 / Core i9</li>
+            <li>RTX 4080 Super 16GB</li>
+            <li>64GB DDR5 Dual Channel</li>
+            <li>4TB NVMe Gen4 SSD</li>
+            <li>32-inch 4K Color-Accurate option</li>
+          </ul>
+        </div>
+        <a class="nexus-pc-product__button" href="{{ routes.cart_url }}">Select Prime 3</a>
+      </article>
+    </div>
+
+    <div class="nexus-pc-product__grid">
+      <article class="nexus-pc-product__card">
+        <span>01</span>
+        <div>
+          <h2>Gaming ready</h2>
+          <p>High-refresh 1080p and 1440p performance with clean cooling and upgrade room.</p>
+        </div>
+      </article>
+      <article class="nexus-pc-product__card">
+        <span>02</span>
+        <div>
+          <h2>Creator capable</h2>
+          <p>Fast CPU, GPU, and NVMe storage for editing, design, streaming, and multitasking.</p>
+        </div>
+      </article>
+      <article class="nexus-pc-product__card">
+        <span>03</span>
+        <div>
+          <h2>Complete desk setup</h2>
+          <p>Bundle includes display and peripherals, so the computer setup feels finished on day one.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="nexus-pc-product__checklist-section">
+      <div class="nexus-pc-product__eyebrow">Lab Standard</div>
+      <h2>Our 6-phase engineering checklist</h2>
+      <div class="nexus-pc-product__checklist-grid">
+        <div class="nexus-pc-product__checklist-card">
+          <span>01</span>
+          <h3>Component validation</h3>
+          <p>Every motherboard, GPU, RAM stick, and storage drive is tested for physical integrity and firmware compatibility.</p>
+        </div>
+        <div class="nexus-pc-product__checklist-card">
+          <span>02</span>
+          <h3>Precision cable routing</h3>
+          <p>Cables are tied and routed through rear channels to maximize airflow, reduce dust buildup, and keep interior visuals clean.</p>
+        </div>
+        <div class="nexus-pc-product__checklist-card">
+          <span>03</span>
+          <h3>Thermal paste application</h3>
+          <p>We use premium non-conductive thermal compounds to ensure optimal contact between CPU IHS and cooler plate.</p>
+        </div>
+        <div class="nexus-pc-product__checklist-card">
+          <span>04</span>
+          <h3>BIOS and driver calibration</h3>
+          <p>BIOS is flashed to the latest stable version, XMP/EXPO memory profiles are enabled, and clean Windows installation is completed.</p>
+        </div>
+        <div class="nexus-pc-product__checklist-card">
+          <span>05</span>
+          <h3>24-hour stress testing</h3>
+          <p>Systems run under synthetic CPU and GPU load tests (OCCT, 3DMark) to verify thermal stability and peak power delivery.</p>
+        </div>
+        <div class="nexus-pc-product__checklist-card">
+          <span>06</span>
+          <h3>Double-boxed freight packaging</h3>
+          <p>PC towers are shipped with form-fitting expanding foam inside the chassis and double-boxed outer packaging to prevent transit damage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus PC product",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus PC product"
+    }
+  ]
+}
+{% endschema %}

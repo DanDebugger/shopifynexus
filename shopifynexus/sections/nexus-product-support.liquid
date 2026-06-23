@@ -1,0 +1,36 @@
+{{ 'section-nexus-product-support.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-product-support">
+  <div class="nexus-product-support__wrap">
+    <div class="nexus-product-support__grid">
+      <div class="nexus-product-support__item">
+        <span>Compatibility verified</span>
+        <strong>Every build is checked before checkout.</strong>
+        <p>CPU, GPU, motherboard, RAM, storage, power supply, case fit, cooling, and RGB options are reviewed for the selected setup.</p>
+      </div>
+      <div class="nexus-product-support__item">
+        <span>Spec guide</span>
+        <strong>Quick hardware summary</strong>
+        <dl class="nexus-product-support__table">
+          <div><dt>CPU</dt><dd>Ryzen 5 / Ryzen 7 / Ryzen 9 or Intel equivalent</dd></div>
+          <div><dt>RAM</dt><dd>16GB, 32GB, or 64GB DDR5 depending on tier</dd></div>
+          <div><dt>Storage</dt><dd>1TB to 4TB NVMe SSD upgrade paths</dd></div>
+          <div><dt>GPU</dt><dd>RTX 4060, RTX 4070 Super, or RTX 4080 Super class</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus product support",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus product support"
+    }
+  ]
+}
+{% endschema %}

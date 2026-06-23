@@ -1,0 +1,320 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{{ 'section-nexus-pc-home.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign collection_products_url = routes.all_products_collection_url | append: '#product-grid'
+  assign bestseller_product = all_products['nexuslab-prime-2']
+-%}
+
+<section class="nexus-home-minimal">
+  <div class="nexus-home-minimal__hero">
+    <div class="nexus-home-minimal__wrap">
+      <div class="nexus-home-minimal__hero-grid">
+        <div>
+          <h1>Gear up for your next build</h1>
+          <p class="nexus-home-minimal__subtext">
+            Shop NexusLab PC bundles built for gaming, school, streaming, editing, and everyday work.
+          </p>
+          <div class="nexus-home-minimal__actions">
+            <a class="nexus-home-minimal__button" href="{{ routes.all_products_collection_url }}">Shop bundles</a>
+            <a class="nexus-home-minimal__button nexus-home-minimal__button--secondary" href="{{ collection_products_url }}">Build custom</a>
+          </div>
+        </div>
+        <div class="nexus-home-minimal__hero-image-wrap">
+          <img class="nexus-home-minimal__hero-img" src="{{ 'nexus-home-hero.jpg' | asset_url }}" alt="Developer using custom PC workstation setup" width="1200" height="890">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nexus-home-minimal__section">
+    <div class="nexus-home-minimal__wrap">
+      <div class="nexus-home-minimal__heading-row">
+        <div>
+          <p class="nexus-home-minimal__eyebrow">PC selling and bundles</p>
+          <h2>Featured bundles</h2>
+        </div>
+        <a class="nexus-home-minimal__view-all" href="{{ routes.all_products_collection_url }}">View all bundles →</a>
+      </div>
+
+      <div class="nexus-home-minimal__carousel" data-nexus-carousel>
+        <div class="nexus-home-minimal__carousel-controls" aria-label="Featured bundle carousel controls">
+          <button class="nexus-home-minimal__carousel-button" type="button" data-carousel-prev aria-label="Previous featured bundles">‹</button>
+          <button class="nexus-home-minimal__carousel-button" type="button" data-carousel-next aria-label="Next featured bundles">›</button>
+        </div>
+        <div class="nexus-home-minimal__carousel-viewport" data-carousel-viewport>
+          <div class="nexus-home-minimal__grid">
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-laptop-air.jpg' | asset_url }}" alt="NexusBook Air student laptop bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Student</span>
+          <h3>NexusBook Air</h3>
+          <p class="nexus-home-minimal__details">Slim student laptop bundled with essentials for study.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>Ryzen 3</li>
+            <li>8GB RAM</li>
+            <li>256GB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱18,500</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-mini.jpg' | asset_url }}" alt="NexusLab Mini office PC bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Mini PC</span>
+          <h3>NexusLab Mini</h3>
+          <p class="nexus-home-minimal__details">Compact space-saving PC for home and office work.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>Core i5</li>
+            <li>16GB RAM</li>
+            <li>512GB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱24,900</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-esports.jpg' | asset_url }}" alt="NexusLab Esports gaming PC bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Esports</span>
+          <h3>NexusLab Esports</h3>
+          <p class="nexus-home-minimal__details">High-performance gaming tower for competitive play.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>Ryzen 5</li>
+            <li>RX 6600</li>
+            <li>512GB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱42,900</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-prime-1.jpg' | asset_url }}" alt="NexusLab Prime 1 gaming PC bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Starter</span>
+          <h3>NexusLab Prime 1</h3>
+          <p class="nexus-home-minimal__details">Starter 1080p gaming and online class setup.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>RTX 4060</li>
+            <li>16GB RAM</li>
+            <li>1TB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱58,900</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-laptop.jpg' | asset_url }}" alt="NexusBook Dock Pro laptop bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Laptop Pro</span>
+          <h3>NexusBook Dock Pro</h3>
+          <p class="nexus-home-minimal__details">Laptop, USB-C dock, external display, and peripherals.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>32GB RAM</li>
+            <li>1TB SSD</li>
+            <li>USB-C dock</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱84,900</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          {%- if bestseller_product.featured_image -%}
+            <img class="nexus-home-minimal__card-media" src="{{ bestseller_product.featured_image | image_url: width: 900 }}" alt="{{ bestseller_product.featured_image.alt | default: 'NexusLab Prime 2 performance PC bundle' | escape }}" width="900" height="680">
+          {%- else -%}
+            <img class="nexus-home-minimal__card-media" src="{{ 'nexus-prime-2.jpg' | asset_url }}" alt="NexusLab Prime 2 performance PC bundle" width="900" height="680">
+          {%- endif -%}
+          <span class="nexus-home-minimal__tier">Performance</span>
+          <h3>NexusLab Prime 2</h3>
+          <p class="nexus-home-minimal__details">Ultimate 1440p gaming, streaming, and editing setup.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>RTX 4070 Super</li>
+            <li>32GB RAM</li>
+            <li>2TB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱98,900</span>
+        </a>
+
+        <a class="nexus-home-minimal__card" href="{{ collection_products_url }}">
+          <span class="nexus-home-minimal__badge">Bundle</span>
+          <img class="nexus-home-minimal__card-media" src="{{ 'nexus-prime-3.jpg' | asset_url }}" alt="NexusLab Prime 3 pro workstation PC bundle" width="900" height="680">
+          <span class="nexus-home-minimal__tier">Pro</span>
+          <h3>NexusLab Prime 3</h3>
+          <p class="nexus-home-minimal__details">Heavy editing, local AI, and 3D workstation setup.</p>
+          <ul class="nexus-home-minimal__specs">
+            <li>RTX 4080 Super</li>
+            <li>64GB RAM</li>
+            <li>4TB SSD</li>
+          </ul>
+          <span class="nexus-home-minimal__price">₱165,000</span>
+        </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nexus-home-minimal__section">
+    <div class="nexus-home-minimal__wrap">
+      <div class="nexus-home-minimal__experience">
+        <div class="nexus-home-minimal__experience-main">
+          <p class="nexus-home-minimal__eyebrow">Custom product experience</p>
+          <h2>Tell us how you work. We shape the setup.</h2>
+          <p>
+            Start from a real bundle, then tune the monitor, storage, memory, cooling, and accessories around your budget and daily workload.
+          </p>
+          <ul class="nexus-home-minimal__experience-steps">
+            <li><span>01</span> Pick gaming, study, creator, office, or workstation</li>
+            <li><span>02</span> Match the build to your budget and desk size</li>
+            <li><span>03</span> Checkout with parts guidance and setup support</li>
+          </ul>
+        </div>
+        <div class="nexus-home-minimal__recommendation">
+          <div>
+            <p class="nexus-home-minimal__eyebrow">Smart recommendation</p>
+            <h3>Fast paths for common buyers</h3>
+            <p>Use these shortcuts when you know the goal but not the exact specs yet.</p>
+          </div>
+          <div class="nexus-home-minimal__recommendation-options">
+            <a class="nexus-home-minimal__recommendation-option" href="{{ collection_products_url }}"><span>Student</span> NexusBook Air</a>
+            <a class="nexus-home-minimal__recommendation-option" href="{{ collection_products_url }}"><span>Esports</span> NexusLab Esports</a>
+            <a class="nexus-home-minimal__recommendation-option" href="{{ collection_products_url }}"><span>Creator</span> NexusLab Prime 2</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nexus-home-minimal__section">
+    <div class="nexus-home-minimal__wrap">
+      <div class="nexus-home-minimal__bestseller">
+        <div class="nexus-home-minimal__bestseller-product">
+          <p class="nexus-home-minimal__eyebrow">Bestseller</p>
+          {%- if bestseller_product.featured_image -%}
+            <img src="{{ bestseller_product.featured_image | image_url: width: 1000 }}" alt="{{ bestseller_product.featured_image.alt | default: 'NexusLab Prime 2 performance gaming PC' | escape }}" width="900" height="900">
+          {%- else -%}
+            <img src="{{ 'nexus-prime-2.jpg' | asset_url }}" alt="NexusLab Prime 2 performance gaming PC" width="900" height="900">
+          {%- endif -%}
+          <h2>NexusLab Prime 2</h2>
+          <span class="nexus-home-minimal__bestseller-price">₱98,900</span>
+          <a class="nexus-home-minimal__button" href="{{ collection_products_url }}">Shop now</a>
+        </div>
+
+        <div class="nexus-home-minimal__bestseller-copy">
+          <div>
+            <p class="nexus-home-minimal__eyebrow">Why it's bestseller</p>
+            <h2>Engineered for ultimate 1440p gaming</h2>
+          </div>
+          <p>
+            Prime 2 is configured for smooth high-refresh gaming, streaming, and creative work with clean thermals and upgrade-ready parts.
+          </p>
+          <dl class="nexus-home-minimal__spec-table">
+            <div class="nexus-home-minimal__spec-row">
+              <dt>Graphics Card</dt>
+              <dd>RTX 4070 Super 12GB</dd>
+            </div>
+            <div class="nexus-home-minimal__spec-row">
+              <dt>Processor</dt>
+              <dd>Ryzen 7 / Core i7</dd>
+            </div>
+            <div class="nexus-home-minimal__spec-row">
+              <dt>Memory</dt>
+              <dd>32GB DDR5 Dual Channel</dd>
+            </div>
+            <div class="nexus-home-minimal__spec-row">
+              <dt>Storage</dt>
+              <dd>2TB PCIe Gen4 NVMe SSD</dd>
+            </div>
+          </dl>
+          <figure class="nexus-home-minimal__review">
+            <div class="nexus-home-minimal__stars" aria-label="Five star rating">★★★★★</div>
+            <blockquote>
+              "The thermal performance on Prime 2 is absolutely insane. Highly recommend the complete desk setup bundle."
+            </blockquote>
+            <figcaption>John D. / Verified buyer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nexus-home-minimal__section">
+    <div class="nexus-home-minimal__wrap">
+      <div class="nexus-home-minimal__heading-row">
+        <div>
+          <p class="nexus-home-minimal__eyebrow">Shop by setup</p>
+          <h2>Build around your need</h2>
+        </div>
+      </div>
+
+      <div class="nexus-home-minimal__category-grid">
+        <a class="nexus-home-minimal__category" href="{{ collection_products_url }}">
+          <img src="{{ 'nexus-laptop-air.jpg' | asset_url }}" alt="Student and productive laptop setup" width="720" height="540">
+          <h3>Productive Laptops</h3>
+          <p>Slim, portable notebooks bundled with external monitor options for study and hybrid work.</p>
+        </a>
+        <a class="nexus-home-minimal__category" href="{{ collection_products_url }}">
+          <img src="{{ 'nexus-mini.jpg' | asset_url }}" alt="Compact Mini PC setup" width="720" height="540">
+          <h3>Mini Computers</h3>
+          <p>Compact, space-saving desktop PCs perfect for home study, office, and light gaming.</p>
+        </a>
+        <a class="nexus-home-minimal__category" href="{{ collection_products_url }}">
+          <img src="{{ 'nexus-esports.jpg' | asset_url }}" alt="Esports gaming PC setup" width="720" height="540">
+          <h3>Esports Systems</h3>
+          <p>High frame-rate gaming towers optimized for competitive gaming and multiplayer esports.</p>
+        </a>
+        <a class="nexus-home-minimal__category" href="{{ collection_products_url }}">
+          {%- if bestseller_product.featured_image -%}
+            <img src="{{ bestseller_product.featured_image | image_url: width: 720 }}" alt="{{ bestseller_product.featured_image.alt | default: 'Performance PC desk setup' | escape }}" width="720" height="540">
+          {%- else -%}
+            <img src="{{ 'nexus-prime-2.jpg' | asset_url }}" alt="Performance PC desk setup" width="720" height="540">
+          {%- endif -%}
+          <h3>Performance bundles</h3>
+          <p>Balanced PC setups for 1440p high-refresh gaming, live streaming, and content creation.</p>
+        </a>
+        <a class="nexus-home-minimal__category" href="{{ collection_products_url }}">
+          <img src="{{ 'nexus-prime-3.jpg' | asset_url }}" alt="Pro workstation setup" width="720" height="540">
+          <h3>Pro workstation</h3>
+          <p>Extreme performance setups for coding, rendering, 3D animations, and local AI workloads.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  (() => {
+    const carousel = document.querySelector("[data-nexus-carousel]");
+    if (!carousel) return;
+
+    const viewport = carousel.querySelector("[data-carousel-viewport]");
+    const previous = carousel.querySelector("[data-carousel-prev]");
+    const next = carousel.querySelector("[data-carousel-next]");
+    const scrollAmount = () => Math.max(280, viewport.clientWidth * 0.82);
+
+    previous?.addEventListener("click", () => {
+      viewport.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    });
+
+    next?.addEventListener("click", () => {
+      viewport.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Nexus ecommerce home",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus ecommerce home"
+    }
+  ]
+}
+{% endschema %}

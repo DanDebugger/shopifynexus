@@ -1,0 +1,190 @@
+{{ 'section-nexus-build-selector.css' | asset_url | stylesheet_tag }}
+
+<section class="nexus-build-selector" id="nexus-build-selector">
+  <div class="nexus-build-selector__wrap">
+    <div class="nexus-build-selector__box">
+      <div class="nexus-build-selector__header">
+        <div>
+          <p class="nexus-build-selector__eyebrow">Bundle PC selector</p>
+          <h2>Compare one bundle at a time.</h2>
+        </div>
+        <p>Tap a tier to see price, purpose, and core specs. Then open the detail page or continue shopping below.</p>
+      </div>
+
+      <div class="nexus-build-selector__tabs">
+        <input id="laptop-air-tab" name="nexus-build-tab" type="radio" checked>
+        <input id="mini-tab" name="nexus-build-tab" type="radio">
+        <input id="esports-tab" name="nexus-build-tab" type="radio">
+        <input id="prime-1-tab" name="nexus-build-tab" type="radio">
+        <input id="laptop-tab" name="nexus-build-tab" type="radio">
+        <input id="prime-2-tab" name="nexus-build-tab" type="radio">
+        <input id="prime-3-tab" name="nexus-build-tab" type="radio">
+
+        <div class="nexus-build-selector__labels" role="tablist" aria-label="NexusLab build tiers">
+          <label class="nexus-build-selector__label" for="laptop-air-tab"><strong>NexusBook Air</strong><span>Student Laptop</span></label>
+          <label class="nexus-build-selector__label" for="mini-tab"><strong>NexusLab Mini</strong><span>Home/Office PC</span></label>
+          <label class="nexus-build-selector__label" for="esports-tab"><strong>NexusLab Esports</strong><span>Esports PC</span></label>
+          <label class="nexus-build-selector__label" for="prime-1-tab"><strong>Prime 1</strong><span>Starter Gaming</span></label>
+          <label class="nexus-build-selector__label" for="laptop-tab"><strong>NexusBook Pro</strong><span>Laptop Bundle</span></label>
+          <label class="nexus-build-selector__label" for="prime-2-tab"><strong>Prime 2</strong><span>Performance</span></label>
+          <label class="nexus-build-selector__label" for="prime-3-tab"><strong>Prime 3</strong><span>Pro Workstation</span></label>
+        </div>
+
+        <div class="nexus-build-selector__panels">
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--laptop-air">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-laptop-air.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Student</span>
+              <h3>NexusBook Air</h3>
+              <p>Ultra-portable 14-inch student laptop bundled with carry sleeve, wireless mouse, and basic accessories.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱18,500</strong><span>student bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Ryzen 3 / Core i3</li>
+                <li>Radeon Graphics</li>
+                <li>8GB RAM / 256GB SSD</li>
+                <li>Sleeve + mouse included</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#laptop-air">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--mini">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-mini.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Mini PC</span>
+              <h3>NexusLab Mini</h3>
+              <p>Space-saving compact desktop computer setup optimized for office work, home study, and media streaming.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱24,900</strong><span>office bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Core i5 / Ryzen 5</li>
+                <li>Iris Xe Graphics</li>
+                <li>16GB RAM / 512GB SSD</li>
+                <li>Vertical stand option</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#mini">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--esports">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-esports.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Esports</span>
+              <h3>NexusLab Esports</h3>
+              <p>Competitive framerate mid-tower PC bundle built for top esports games with quiet multi-fan airflow.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱42,900</strong><span>esports bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Ryzen 5 5600X</li>
+                <li>Radeon RX 6600</li>
+                <li>16GB RAM / 512GB SSD</li>
+                <li>650W Bronze PSU</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#esports">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--prime-1">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-prime-1.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Starter</span>
+              <h3>NexusLab Prime 1</h3>
+              <p>Best entry custom desktop PC bundle for 1080p gaming, online class, and daily home office work.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱58,900</strong><span>starter gaming</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Ryzen 5 / Core i5</li>
+                <li>RTX 4060 class GPU</li>
+                <li>16GB DDR5 / 1TB SSD</li>
+                <li>24-inch 144Hz IPS option</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#prime-1">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--laptop">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-laptop.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Laptop Pro</span>
+              <h3>NexusBook Dock Pro</h3>
+              <p>Portable hybrid notebook bundle with dual-channel RAM, external monitor, USB-C dock, and peripherals.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱84,900</strong><span>laptop pro bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Core i7 / Ryzen 7</li>
+                <li>32GB RAM / 1TB SSD</li>
+                <li>USB-C Dual-HDMI Dock</li>
+                <li>27-inch 1440p Monitor</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#laptop-pro">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--prime-2">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-prime-2.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Performance</span>
+              <h3>NexusLab Prime 2</h3>
+              <p>Balanced creator and gamer desktop bundle for high-frame 1440p gaming, streaming, and editing.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱98,900</strong><span>bestseller bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Ryzen 7 / Core i7</li>
+                <li>RTX 4070 Super GPU</li>
+                <li>32GB DDR5 / 2TB SSD</li>
+                <li>27-inch 165Hz IPS option</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#prime-2">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="nexus-build-selector__panel nexus-build-selector__panel--prime-3">
+            <div class="nexus-build-selector__media" style="--build-image: url('{{ 'nexus-prime-3.jpg' | asset_url }}');"></div>
+            <div class="nexus-build-selector__content">
+              <span class="nexus-build-selector__tag">Premium</span>
+              <h3>NexusLab Prime 3</h3>
+              <p>High-end workstation desktop bundle optimized for 3D rendering, coding, local AI, and multitasking.</p>
+              <div class="nexus-build-selector__price"><strong>From ₱165,000</strong><span>workstation bundle</span></div>
+              <ul class="nexus-build-selector__specs">
+                <li>Ryzen 9 / Core i9</li>
+                <li>RTX 4080 Super GPU</li>
+                <li>64GB DDR5 / 4TB SSD</li>
+                <li>32-inch 4K IPS option</li>
+              </ul>
+              <div class="nexus-build-selector__actions">
+                <a class="nexus-build-selector__button" href="{{ pages.contact.url | default: '/pages/contact' }}#prime-3">View details</a>
+                <a class="nexus-build-selector__button nexus-build-selector__button--secondary" href="#product-grid">Shop products</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nexus build selector",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Nexus build selector"
+    }
+  ]
+}
+{% endschema %}

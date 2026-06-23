@@ -1,0 +1,93 @@
+  .nexus-product-support {
+    background: var(--nexus-bg);
+    color: var(--nexus-text);
+    border-top: 1px solid var(--nexus-border);
+  }
+
+  .nexus-product-support__wrap {
+    width: min(132rem, calc(100% - 4rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 6vw, 7rem) 0;
+  }
+
+  .nexus-product-support__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .nexus-product-support__item {
+    display: grid;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    background: var(--nexus-panel);
+    border: 1px solid var(--nexus-border);
+  }
+
+  .nexus-product-support__item span {
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nexus-product-support__item strong {
+    display: block;
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+    line-height: 1.1;
+    color: var(--nexus-white);
+  }
+
+  .nexus-product-support__item p {
+    margin: 0;
+    color: var(--nexus-text-muted);
+    line-height: 1.55;
+  }
+
+  .nexus-product-support__table {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+  }
+
+  .nexus-product-support__table div {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--nexus-border);
+  }
+
+  .nexus-product-support__table dt {
+    color: var(--nexus-accent);
+    font-family: var(--font-mono-family);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  .nexus-product-support__table dd {
+    margin: 0;
+    color: var(--nexus-text);
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .nexus-product-support__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .nexus-product-support__wrap {
+      width: min(100% - 3rem, 70rem);
+    }
+
+    .nexus-product-support__table div {
+      grid-template-columns: 1fr;
+    }
+  }
