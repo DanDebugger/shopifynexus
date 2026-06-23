@@ -1,6 +1,6 @@
-# NexusLab PC Builder & Sales Ranker
+# NexusLab Shopify Ecosystem
 
-Welcome to the **NexusLab** monorepo. This repository contains a deeply integrated Shopify ecosystem designed for a custom PC builder storefront. It includes a custom Shopify Theme, a Shopify Remix App for internal workflow management, and a Theme App Extension for injecting analytics directly into the storefront.
+Welcome to the **NexusLab** monorepo. This repository contains a deeply integrated Shopify ecosystem designed for a pre-built PC storefront. It includes a custom Shopify Theme, a Shopify Remix App for internal workflow management, and a Theme App Extension for injecting analytics directly into the storefront.
 
 ## 🚀 Tech Stack
 - **Framework:** [Remix](https://remix.run/) (React 18)
@@ -21,10 +21,10 @@ nexus-lab/
 │   ├── routes/                    # API Routes & UI Views (Polaris)
 │   │   ├── app._index.tsx         # App Dashboard / Leaderboard
 │   │   ├── app.products.tsx       # Product Sync & Sale Simulation UI
-│   │   └── app.builds.$id.tsx     # Custom PC Build Tracker Details
+│   │   └── app.builds.$id.tsx     # NexusLab Pre-built Assembly Tracker
 │   ├── services/                  # Business Logic
 │   │   ├── rankingService.server.ts # Leaderboard ranking algorithm
-│   │   └── buildScorer.server.ts    # Compatibility scoring
+│   │   └── buildScorer.server.ts    # System performance scoring
 │   └── shopify.server.ts          # Shopify App Initialization
 ├── extensions/                    # Theme App Extensions
 │   └── nexus-storefront-integration/
@@ -44,10 +44,10 @@ Tracks sales velocity, revenue, and views to generate a dynamic ranking tier (S,
 - **Decoupled Data:** Product metadata is stored in `productsTable` while volatile analytics are stored in `salesDataTable` to prevent database locking during high-frequency purchases.
 - **Algorithm:** Uses a weighted formula `(Units * 10) + (Revenue / 100) + (Views * 0.1)` to assign scores.
 
-### 2. PC Build Workflow Tracker
-Allows store admins to track custom PC builds for specific orders.
-- Uses `buildTemplateTable` to define base configurations (e.g., "Pro Gamer", "Streamer Elite").
-- Uses `customerBuildTable` to track individual assembly status, components, and performance scores.
+### 2. Pre-Built Assembly Workflow Tracker
+Allows store admins to track the assembly and testing of their branded PC bundles (e.g., Gaming, School, Streaming, Editing).
+- Uses `buildTemplateTable` to define base configurations for their pre-built product lines.
+- Uses `customerBuildTable` to track individual assembly status, testing, and performance scores before shipping to customers.
 
 ## 🛠 Local Development Setup
 

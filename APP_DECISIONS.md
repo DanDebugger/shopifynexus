@@ -1,11 +1,11 @@
 # Shopify Nexus: Architecture & Decisions
 
 ## 1. Store Concept
-**NexusLab PC Builder** is a specialized Shopify storefront catering to gamers, professionals, and enthusiasts. The store sells pre-built workstations, custom PC configurations, individual components (GPUs, CPUs, RAM), and gaming peripherals. The brand focuses on high-performance hardware and a premium, data-driven shopping experience.
+**NexusLab** is a specialized Shopify storefront focused on pre-built PC bundles designed for gaming, school, streaming, video editing, and everyday work. Inspired by brands like NZXT, NexusLab builds and sells its own branded, ready-to-go systems rather than offering a granular "pick-your-own-parts" custom builder. The brand focuses on delivering high-performance, plug-and-play hardware with a premium, data-driven shopping experience.
 
 ## 2. App Idea
 The **NexusLab Shopify App** serves two major functions:
-1. **Custom PC Build Tracker:** A workflow management system for staff to track customer PC assemblies, manage templates, and calculate compatibility/performance scores.
+1. **Pre-Built Inventory & Workflow Tracker:** A workflow management system for staff to track the assembly, testing, and QA status of NexusLab's own branded PC bundles before they ship to customers.
 2. **Sales Ranker & Leaderboard:** A dynamic analytics engine that tracks product performance (units sold, revenue, views) and automatically ranks products into tiers (S, A, B, C). This leaderboard is injected directly into the Shopify Admin Dashboard and can be exposed on the Storefront via Theme App Extensions to drive customer FOMO and highlight trending products.
 
 ## 3. Key Architecture & Schema Decisions
