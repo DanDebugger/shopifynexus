@@ -27,4 +27,4 @@ The **NexusLab Shopify App** serves two major functions:
 1. **Live Webhook Integration:** Once Shopify grants the Customer Data scopes, I would fully implement the `orders/create` and `checkouts/create` webhooks to process sales metrics passively in the background.
 2. **Time-Decayed Scoring (Trending Algorithm):** The current algorithm ranks all-time sales. I would implement a time-decay factor (e.g., heavily weighting sales from the last 7 days) to create a true "Trending Now" leaderboard rather than a static "All Time Bestsellers" list.
 3. **Redis Caching:** For the Theme App Extension (Storefront), hitting the MySQL database on every customer page load isn't scalable. I would implement Redis to cache the top 10 leaderboard and invalidate it only when rankings actually shift.
-4. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion.
+4. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion..
