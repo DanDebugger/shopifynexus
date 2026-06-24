@@ -10,18 +10,18 @@ import { getTierForRank } from "../services/rankingService.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
-  
+
   // Fetch active templates and recent builds
   const templates = await db.select().from(buildTemplateTable).orderBy(desc(buildTemplateTable.createdAt)).limit(10);
   const recentBuilds = await db.select().from(customerBuildTable).orderBy(desc(customerBuildTable.createdAt)).limit(10);
-  
+
   // Fetch top 10 ranked products
   const rawLeaderboard = await db.select()
     .from(salesDataTable)
     .leftJoin(productsTable, eq(salesDataTable.productId, productsTable.id))
     .orderBy(salesDataTable.rankPosition)
     .limit(10);
-  
+
   const leaderboard = rawLeaderboard.map(row => ({
     ...row,
     tier: getTierForRank(row.sales_data?.rankPosition ?? null)
@@ -42,7 +42,7 @@ export default function Index() {
 
       <s-section heading="Dashboard Overview">
         <s-paragraph>
-          Welcome to the NexusLab PC Build Tracker. Here you can manage your custom PC assembly workflows, 
+          Welcome to the NexusLab PC Build Tracker. Here you can manage your custom PC assembly workflows,
           track customer builds, and view performance compatibility scores.
         </s-paragraph>
       </s-section>
@@ -55,7 +55,7 @@ export default function Index() {
             {recentBuilds.map((build) => (
               <s-box key={build?.id} padding="base" borderWidth="base" borderRadius="base" background="subdued">
                 <s-stack direction="inline" gap="base">
-                  <strong><s-text>Build #{build?.id.substring(0,8)}</s-text></strong>
+                  <strong><s-text>Build #{build?.id.substring(0, 8)}</s-text></strong>
                   <s-text>Status: {build?.status}</s-text>
                   <s-text>Score: {build?.totalScore}</s-text>
                   <s-button variant="tertiary" onClick={() => navigate(`/app/builds/${build?.id}`)}>View Details</s-button>
@@ -91,12 +91,12 @@ export default function Index() {
               const sales = row.sales_data;
               const prod = row.products;
               const tier = row.tier;
-              
+
               return (
                 <s-box key={sales.id} padding="base" borderWidth="base" borderRadius="base" background="subdued">
                   <s-stack direction="inline" gap="base">
                     <strong><s-text>#{sales.rankPosition}</s-text></strong>
-                    {prod?.imageUrl && <img src={prod.imageUrl} alt={prod.title} width="30" height="30" style={{objectFit: 'cover'}} />}
+                    {prod?.imageUrl && <img src={prod.imageUrl} alt={prod.title} width="30" height="30" style={{ objectFit: 'cover' }} />}
                     <s-stack direction="block" gap="none">
                       <strong><s-text>{prod?.title || 'Unknown'}</s-text></strong>
                       <s-text>{tier}</s-text>

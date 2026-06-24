@@ -8,12 +8,12 @@ import { eq } from "drizzle-orm";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
-  
+
   // Left join products with their sales data
   const rawData = await db.select()
     .from(productsTable)
     .leftJoin(salesDataTable, eq(productsTable.id, salesDataTable.productId));
-    
+
   const data = rawData.map(row => ({
     ...row,
     tier: getTierForRank(row.sales_data?.rankPosition ?? null)
@@ -36,7 +36,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       const sd = existingSales[0];
       const product = await db.select().from(productsTable).where(eq(productsTable.id, productId));
       const price = parseFloat(product[0]?.price || "0");
-      
+
       const newUnits = sd.unitsSold + Math.floor(Math.random() * 5) + 1; // 1-5 units
       const newRevenue = (parseFloat(sd.revenue || "0") + (newUnits - sd.unitsSold) * price).toFixed(2);
       const newViews = sd.views + Math.floor(Math.random() * 20);
@@ -80,41 +80,41 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       `);
 
       const responseJson = await response.json();
-      
+
       if (responseJson.errors) {
         return Response.json({ error: JSON.stringify(responseJson.errors) }, { status: 400 });
       }
-      
+
       const shopifyProducts = responseJson.data?.products?.edges.map((edge: any) => edge.node) || [];
 
-  // Sync them into our Drizzle database
-  for (const sp of shopifyProducts) {
-    const price = sp.variants.edges.length > 0 ? sp.variants.edges[0].node.price : "0.00";
-    
-    // Upsert logic or simple ignore if exists. We'll do a basic lookup.
-    const existing = await db.select().from(productsTable).where(eq(productsTable.shopifyProductId, sp.id));
-    if (existing.length === 0) {
-      const inserted = await db.insert(productsTable).values({
-        shopifyProductId: sp.id,
-        title: sp.title,
-        category: sp.productType || "General",
-        price: price,
-        imageUrl: sp.featuredImage?.url || "",
-      });
+      // Sync them into our Drizzle database
+      for (const sp of shopifyProducts) {
+        const price = sp.variants.edges.length > 0 ? sp.variants.edges[0].node.price : "0.00";
 
-      // Also create empty sales data for the newly imported product so it can be ranked later
-      await db.insert(salesDataTable).values({
-        productId: inserted[0].insertId,
-        unitsSold: 0,
-        revenue: "0.00",
-        views: 0,
-        rankScore: "0.00"
-      });
-    }
-  }
+        // Upsert logic or simple ignore if exists. We'll do a basic lookup.
+        const existing = await db.select().from(productsTable).where(eq(productsTable.shopifyProductId, sp.id));
+        if (existing.length === 0) {
+          const inserted = await db.insert(productsTable).values({
+            shopifyProductId: sp.id,
+            title: sp.title,
+            category: sp.productType || "General",
+            price: price,
+            imageUrl: sp.featuredImage?.url || "",
+          });
 
-  return Response.json({ success: true, count: shopifyProducts.length });
-} catch (e: any) {
+          // Also create empty sales data for the newly imported product so it can be ranked later
+          await db.insert(salesDataTable).values({
+            productId: inserted[0].insertId,
+            unitsSold: 0,
+            revenue: "0.00",
+            views: 0,
+            rankScore: "0.00"
+          });
+        }
+      }
+
+      return Response.json({ success: true, count: shopifyProducts.length });
+    } catch (e: any) {
       console.error("SYNC ERROR:", e);
       return Response.json({ error: e.message || "Unknown error occurred" }, { status: 500 });
     }
@@ -136,19 +136,19 @@ export default function Products() {
         <s-stack direction="inline" gap="base" alignment="center">
           {actionData?.error && <span style={{ color: "red", fontWeight: "bold" }}>Error: {actionData.error}</span>}
           {actionData?.success && <span style={{ color: "green", fontWeight: "bold" }}>Synced {actionData.count} products!</span>}
-          
+
           <fetcher.Form method="post">
-          <input type="hidden" name="intent" value="sync_products" />
-          <button type="submit" style={{ padding: "8px 16px", cursor: "pointer" }}>
-            Sync Shopify Products
-          </button>
-        </fetcher.Form>
+            <input type="hidden" name="intent" value="sync_products" />
+            <button type="submit" style={{ padding: "8px 16px", cursor: "pointer" }}>
+              Sync Shopify Products
+            </button>
+          </fetcher.Form>
         </s-stack>
         <s-button onClick={() => navigate("/app/promos/new")}>
           Create Promo
         </s-button>
       </s-stack>
-      
+
       <s-section>
         {data.length === 0 ? (
           <s-paragraph>No products found in the database. Need to sync products.</s-paragraph>
@@ -158,11 +158,11 @@ export default function Products() {
               const prod = row.products;
               const sales = row.sales_data;
               const tier = row.tier;
-              
+
               return (
                 <s-box key={prod.id} padding="base" borderWidth="base" borderRadius="base" background="subdued">
                   <s-stack direction="inline" gap="base">
-                    {prod.imageUrl && <img src={prod.imageUrl} alt={prod.title} width="50" height="50" style={{objectFit: 'cover', borderRadius: '4px'}} />}
+                    {prod.imageUrl && <img src={prod.imageUrl} alt={prod.title} width="50" height="50" style={{ objectFit: 'cover', borderRadius: '4px' }} />}
                     <s-stack direction="block" gap="base">
                       <strong><s-text>{prod.title}</s-text></strong>
                       <s-text>Rank: #{sales?.rankPosition || 'Unranked'} - {tier}</s-text>
