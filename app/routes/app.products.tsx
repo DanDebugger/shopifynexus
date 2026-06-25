@@ -37,9 +37,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       const product = await db.select().from(productsTable).where(eq(productsTable.id, productId));
       const price = parseFloat(product[0]?.price || "0");
 
-      const newUnits = sd.unitsSold + Math.floor(Math.random() * 5) + 1; // 1-5 units
-      const newRevenue = (parseFloat(sd.revenue || "0") + (newUnits - sd.unitsSold) * price).toFixed(2);
-      const newViews = sd.views + Math.floor(Math.random() * 20);
+      const newUnits = (sd.unitsSold ?? 0) + Math.floor(Math.random() * 5) + 1; // 1-5 units
+      const newRevenue = (parseFloat(sd.revenue || "0") + (newUnits - (sd.unitsSold ?? 0)) * price).toFixed(2);
+      const newViews = (sd.views ?? 0) + Math.floor(Math.random() * 20);
 
       await db.update(salesDataTable)
         .set({ unitsSold: newUnits, revenue: newRevenue, views: newViews })
@@ -79,7 +79,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         }
       `);
 
-      const responseJson = await response.json();
+      const responseJson = (await response.json()) as any;
 
       if (responseJson.errors) {
         return Response.json({ error: JSON.stringify(responseJson.errors) }, { status: 400 });
@@ -133,7 +133,7 @@ export default function Products() {
   return (
     <s-page heading="Sales Ranker Products">
       <s-stack direction="inline" slot="primary-action">
-        <s-stack direction="inline" gap="base" alignment="center">
+        <s-stack direction="inline" gap="base" alignItems="center">
           {actionData?.error && <span style={{ color: "red", fontWeight: "bold" }}>Error: {actionData.error}</span>}
           {actionData?.success && <span style={{ color: "green", fontWeight: "bold" }}>Synced {actionData.count} products!</span>}
 

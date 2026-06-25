@@ -1,0 +1,23 @@
+<div class="nexus-rank-badge nexus-rank-{{ product.metafields.nexus.rank_tier.value | default: 'unranked' | downcase }}" style="display: inline-block; padding: 4px 8px; border-radius: 4px; font-weight: bold;">
+  {% assign tier = product.metafields.nexus.rank_tier.value | default: 'Unranked' %}
+  {% if tier == 'S' %}
+    <span style="color: #fff; background-color: #ff4500; padding: 2px 6px; border-radius: 4px;">Tier S 🔥</span>
+  {% elsif tier == 'A' %}
+    <span style="color: #fff; background-color: #ff8c00; padding: 2px 6px; border-radius: 4px;">Tier A ⭐</span>
+  {% elsif tier == 'B' %}
+    <span style="color: #fff; background-color: #1e90ff; padding: 2px 6px; border-radius: 4px;">Tier B</span>
+  {% elsif tier == 'C' %}
+    <span style="color: #fff; background-color: #808080; padding: 2px 6px; border-radius: 4px;">Tier C</span>
+  {% else %}
+    <span style="color: #666; background-color: #eee; padding: 2px 6px; border-radius: 4px;">{{ tier }}</span>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Nexus Rank Badge",
+  "target": "section",
+  "templates": ["product"],
+  "settings": []
+}
+{% endschema %}

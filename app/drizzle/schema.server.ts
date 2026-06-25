@@ -74,6 +74,7 @@ export const salesDataTable = mysqlTable('sales_data', {
   views: int('views').default(0),
   rankScore: decimal('rank_score', { precision: 10, scale: 2 }).default('0'),
   rankPosition: int('rank_position'),        // 1-10
+  rankTier: varchar('rank_tier', { length: 10 }), // S, A, B, C
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 

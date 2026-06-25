@@ -1,0 +1,53 @@
+<div class="nexus-leaderboard" data-proxy-url="{{ shop.url }}/apps/nexus/api/leaderboard">
+  <h2>{{ section.settings.title }}</h2>
+  <div id="nexus-leaderboard-container">
+    <p>Loading leaderboard...</p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById('nexus-leaderboard-container');
+    const proxyUrl = document.querySelector('.nexus-leaderboard').dataset.proxyUrl;
+
+    fetch(proxyUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (!data || data.length === 0) {
+          container.innerHTML = '<p>No rankings available yet.</p>';
+          return;
+        }
+
+        let html = '<ol class="nexus-leaderboard-list">';
+        data.forEach(item => {
+          html += `
+            <li style="margin-bottom: 10px; display: flex; justify-content: space-between;">
+              <span style="font-weight: bold;">${item.title}</span>
+              <span style="background: #333; color: #fff; padding: 2px 6px; border-radius: 4px;">Tier ${item.rankTier || 'C'}</span>
+            </li>
+          `;
+        });
+        html += '</ol>';
+        container.innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error fetching leaderboard:', error);
+        container.innerHTML = '<p>Failed to load leaderboard.</p>';
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Nexus Leaderboard",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Top Trending PC Builds"
+    }
+  ]
+}
+{% endschema %}

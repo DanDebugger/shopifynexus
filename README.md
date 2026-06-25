@@ -19,9 +19,9 @@ nexus-lab/
 │   ├── drizzle/                   # Database Schemas & Migrations
 │   │   └── schema.server.ts       # Products, Sales, Builds, Templates
 │   ├── routes/                    # API Routes & UI Views (Polaris)
-│   │   ├── app._index.tsx         # App Dashboard / Leaderboard
+│   │   ├── app.leaderboard.tsx    # Admin Leaderboard Dashboard
 │   │   ├── app.products.tsx       # Product Sync & Sale Simulation UI
-│   │   └── app.builds.$id.tsx     # NexusLab Pre-built Assembly Tracker
+│   │   └── app.workflows.tsx      # NexusLab Pre-built Assembly Tracker
 │   ├── services/                  # Business Logic
 │   │   ├── rankingService.server.ts # Leaderboard ranking algorithm
 │   │   └── buildScorer.server.ts    # System performance scoring
