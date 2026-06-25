@@ -1,6 +1,5 @@
 import { db } from "../app/db.server";
 import { sessionTable } from "../app/drizzle/schema.server";
-import shopify from "../app/shopify.server";
 
 async function main() {
   const sessions = await db.select().from(sessionTable);
@@ -11,43 +10,45 @@ async function main() {
     return;
   }
 
-  // Construct a valid Session object expected by shopify-api-node
-  const validSession = {
-    ...session,
-    isActive: () => true,
-  };
-
-  const client = new shopify.api.clients.Graphql({ session: validSession as any });
-  
   try {
-    const response = await client.request(`
-      query {
-        products(first: 50) {
-          edges {
-            node {
-              id
-              title
-              productType
-              featuredImage {
-                url
-              }
-              variants(first: 1) {
-                edges {
-                  node {
-                    price
+    const response = await fetch(`https://${session.shop}/admin/api/2024-10/graphql.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": session.accessToken,
+      },
+      body: JSON.stringify({
+        query: `
+          query {
+            products(first: 50) {
+              edges {
+                node {
+                  id
+                  title
+                  productType
+                  featuredImage {
+                    url
                   }
+                  variants(first: 1) {
+                    edges {
+                      node {
+                        price
+                      }
+                    }
+                  }
+                  createdAt
                 }
               }
-              createdAt
             }
           }
-        }
-      }
-    `);
+        `
+      })
+    });
     
-    console.log("Response data:", JSON.stringify(response.data, null, 2));
-    if (response.data && response.data.products) {
-      console.log(`Found ${response.data.products.edges.length} products.`);
+    const data = (await response.json()) as any;
+    console.log("Response data:", JSON.stringify(data, null, 2));
+    if (data && data.data && data.data.products) {
+      console.log(`Found ${data.data.products.edges.length} products.`);
     }
   } catch (e) {
     console.error("GraphQL Error:", e);

@@ -15,6 +15,10 @@ The **NexusLab Shopify App** serves two major functions:
   - `productsTable` stores core Shopify data (`shopifyProductId`, `title`, `price`).
   - `salesDataTable` isolates rapidly changing metrics (`unitsSold`, `revenue`, `rankScore`). Separating these prevents locking the main product table during high-frequency metric updates.
   - `customerBuildTable` & `buildTemplateTable` handle the custom PC workflow.
+- **Build Queue & Workflow UI:** 
+  - **Kanban Board:** The workflow tracker was built as a horizontal Kanban board using Polaris `Card` components within a custom flex layout for a premium, Trello-like experience.
+  - **Automated Webhooks:** `orders/paid` webhooks are caught to automatically inject new orders into the queue, but this is filtered via an `appSettingsTable` to ensure only specific "trigger" products create a build job.
+  - **Manual Fallback:** A manual order lookup search bar was added to the UI using the Admin GraphQL API. To maintain velocity and avoid requiring `read_customers` scopes from Shopify, the customer lookup was intentionally omitted from this search query since `customerId` is an optional field in our local database.
 - **Scoring System:** The `rankScore` is calculated using a weighted formula: `(Units * 10) + (Revenue / 100) + (Views * 0.1)`. This normalizes cheap high-volume items against expensive low-volume items (like GPUs).
 - **Batch Processing:** Instead of recalculating the leaderboard on every page load, `calculateRankings()` is designed to run periodically or after a simulated batch update.
 

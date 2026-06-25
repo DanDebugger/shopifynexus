@@ -10,6 +10,8 @@ export async function calculateBuildTierScore(customerBuildId: string) {
   const build = buildResult[0];
   
   // 2. Fetch the associated Build Template
+  if (!build.templateId) return null;
+  
   const templateResult = await db.select().from(buildTemplateTable).where(eq(buildTemplateTable.id, build.templateId));
   const baseScore = templateResult.length > 0 && templateResult[0].baseTierScore ? templateResult[0].baseTierScore : 0;
   

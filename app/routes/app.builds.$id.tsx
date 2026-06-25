@@ -52,6 +52,23 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
     return { success: true };
   }
 
+  if (intent === "updateShipping") {
+    const courier = formData.get("courier") as string;
+    const trackingNumber = formData.get("trackingNumber") as string;
+    
+    await db.update(customerBuildTable).set({ courier, trackingNumber, updatedAt: new Date() }).where(eq(customerBuildTable.id, id));
+    
+    await db.insert(buildHistoryLogTable).values({
+      id: Math.random().toString(36).substring(7),
+      buildId: id,
+      newStatus: "Ready for Shipping",
+      message: `Shipping updated: ${courier} - ${trackingNumber}`,
+      timestamp: new Date()
+    });
+    
+    return { success: true };
+  }
+
   if (intent === "createBuild") {
     const templateId = formData.get("templateId") as string;
     const customerId = formData.get("customerId") as string;
@@ -139,16 +156,37 @@ export default function BuildDetails() {
             <s-stack direction="inline" gap="base">
               <select name="status" defaultValue={build?.status} style={{ padding: "0.5rem", borderRadius: "4px" }}>
                 <option value="Pending">Pending</option>
-                <option value="Parts Sourced">Parts Sourced</option>
-                <option value="Assembling">Assembling</option>
+                <option value="Assembly">Assembly</option>
                 <option value="Testing">Testing</option>
-                <option value="Shipped">Shipped</option>
+                <option value="QA Passed">QA Passed</option>
+                <option value="Ready for Shipping">Ready for Shipping</option>
               </select>
               <s-button type="submit" {...(isLoading ? { loading: true } : {})}>Update Status</s-button>
             </s-stack>
           </fetcher.Form>
         </s-box>
       </s-section>
+
+      {build?.status === "Ready for Shipping" && (
+        <s-section heading="Shipping & Fulfillment">
+          <s-box padding="base" borderWidth="base" borderRadius="base">
+            <fetcher.Form method="post">
+              <input type="hidden" name="intent" value="updateShipping" />
+              <s-stack direction="block" gap="base">
+                <s-stack direction="block" gap="base">
+                  <strong><s-text>Courier</s-text></strong>
+                  <input type="text" name="courier" defaultValue={build.courier || ''} placeholder="e.g. FedEx, UPS" style={{ padding: "0.5rem", borderRadius: "4px", width: "100%", maxWidth: "400px" }} />
+                </s-stack>
+                <s-stack direction="block" gap="base">
+                  <strong><s-text>Tracking Number</s-text></strong>
+                  <input type="text" name="trackingNumber" defaultValue={build.trackingNumber || ''} placeholder="e.g. 1Z9999999999999999" style={{ padding: "0.5rem", borderRadius: "4px", width: "100%", maxWidth: "400px" }} />
+                </s-stack>
+                <s-button type="submit" {...(isLoading ? { loading: true } : {})}>Save Shipping Details</s-button>
+              </s-stack>
+            </fetcher.Form>
+          </s-box>
+        </s-section>
+      )}
 
       {scoreData && (
         <s-section heading="Performance Tier & Bottleneck Scorer">

@@ -18,6 +18,13 @@ export const sessionTable = mysqlTable("session", {
   emailVerified: boolean("emailVerified").default(false),
 });
 
+export const appSettingsTable = mysqlTable("appSettings", {
+  id: int("id").primaryKey().default(1),
+  shop: varchar("shop", { length: 255 }).notNull(),
+  triggerProductIds: text("triggerProductIds"), // Comma-separated product IDs
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
 export const buildTemplateTable = mysqlTable("buildTemplate", {
   id: varchar("id", { length: 255 }).primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
@@ -38,9 +45,13 @@ export const customerBuildTable = mysqlTable("customerBuild", {
   id: varchar("id", { length: 255 }).primaryKey(),
   shop: varchar("shop", { length: 255 }).notNull(),
   customerId: varchar("customerId", { length: 255 }),
-  templateId: varchar("templateId", { length: 255 }).notNull(),
+  orderId: varchar("orderId", { length: 255 }),
+  orderNumber: varchar("orderNumber", { length: 255 }),
+  templateId: varchar("templateId", { length: 255 }),
   status: varchar("status", { length: 50 }).notNull().default('Pending'),
   totalScore: int("totalScore").default(0),
+  trackingNumber: varchar("trackingNumber", { length: 255 }),
+  courier: varchar("courier", { length: 255 }),
   createdAt: datetime("createdAt"),
   updatedAt: datetime("updatedAt"),
 });
