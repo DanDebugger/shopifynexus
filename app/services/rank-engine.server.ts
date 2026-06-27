@@ -29,6 +29,7 @@ export async function calculateRankings(admin: any) {
 
   // Assign tiers based on distribution or absolute numbers
   const totalItems = scoredData.length;
+  const topProductGids: string[] = [];
   
   for (let i = 0; i < totalItems; i++) {
     const item = scoredData[i];
@@ -85,6 +86,43 @@ export async function calculateRankings(admin: any) {
           }
         }
       );
+    }
+    
+    if (i < 5) {
+      topProductGids.push(gid);
+    }
+  }
+
+  // 3. Update the global Shop Metafield with the top 5 products
+  if (admin && topProductGids.length > 0) {
+    try {
+      const shopQuery = await admin.graphql(`query { shop { id } }`);
+      const shopData = await shopQuery.json();
+      const shopId = shopData.data?.shop?.id;
+
+      if (shopId) {
+        await admin.graphql(
+          `#graphql
+          mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
+            metafieldsSet(metafields: $metafields) {
+              userErrors { message }
+            }
+          }`,
+          {
+            variables: {
+              metafields: [{
+                ownerId: shopId,
+                namespace: "nexus",
+                key: "top_products",
+                type: "list.product_reference",
+                value: JSON.stringify(topProductGids)
+              }]
+            }
+          }
+        );
+      }
+    } catch (e) {
+      console.error("Failed to set top_products shop metafield:", e);
     }
   }
 

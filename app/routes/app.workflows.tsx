@@ -7,12 +7,12 @@ import {
   Badge,
   ButtonGroup,
   Button,
-  FormLayout,
+  InlineStack,
   TextField,
   Banner
 } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useLoaderData, useSubmit, useNavigate, useActionData, Form as RemixForm, useNavigation } from "react-router";
 import { db } from "../db.server";
 import { customerBuildTable } from "../drizzle/schema.server";
@@ -125,9 +125,11 @@ export default function Workflows() {
   const handleSearchChange = useCallback((value: string) => setSearchQuery(value), []);
   const isSearching = navigation.state === "submitting" && navigation.formData?.get("intent") === "searchOrder";
 
-  if (actionData?.action === "redirect" && actionData?.buildId) {
-    navigate(`/app/builds/${actionData.buildId}`);
-  }
+  useEffect(() => {
+    if (actionData?.action === "redirect" && actionData?.buildId) {
+      navigate(`/app/builds/${actionData.buildId}`);
+    }
+  }, [actionData, navigate]);
 
   const handleStatusChange = (buildId: string, newStatus: string) => {
     submit({ buildId, status: newStatus }, { method: "POST" });
@@ -144,15 +146,13 @@ export default function Workflows() {
               <Text as="h2" variant="headingMd">Manual Order Lookup</Text>
               <RemixForm method="post">
                 <input type="hidden" name="intent" value="searchOrder" />
-                <FormLayout>
-                  <FormLayout.Group>
+                <InlineStack gap="400" blockAlign="end">
+                  <div style={{ flexGrow: 1, maxWidth: '400px' }}>
                     <input type="hidden" name="searchQuery" value={searchQuery} />
-                    <TextField label="Order Number" value={searchQuery} onChange={handleSearchChange} autoComplete="off" placeholder="1006" />
-                    <div style={{ alignSelf: 'flex-end', paddingBottom: '2px' }}>
-                      <Button submit loading={isSearching}>Search</Button>
-                    </div>
-                  </FormLayout.Group>
-                </FormLayout>
+                    <TextField label="Order Number" value={searchQuery} onChange={handleSearchChange} autoComplete="off" placeholder="e.g. 1006" />
+                  </div>
+                  <Button submit loading={isSearching} variant="primary">Search</Button>
+                </InlineStack>
               </RemixForm>
 
               {actionData?.action === "found" && (
@@ -182,9 +182,27 @@ export default function Workflows() {
         </Layout.Section>
 
         <Layout.Section>
-          <div style={{ display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '16px', alignItems: 'flex-start' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'nowrap',
+            justifyContent: 'flex-start',
+            gap: '16px', 
+            overflowX: 'auto', 
+            paddingBottom: '16px', 
+            alignItems: 'flex-start',
+            width: '100%',
+            WebkitOverflowScrolling: 'touch'
+          }}>
             {columns.map((column) => (
-              <div key={column} style={{ minWidth: '320px', maxWidth: '320px', backgroundColor: '#f4f6f8', padding: '16px', borderRadius: '12px' }}>
+              <div key={column} style={{ 
+                flex: '0 0 auto', 
+                minWidth: '280px',
+                maxWidth: '320px', 
+                width: '85vw',
+                backgroundColor: '#f4f6f8', 
+                padding: '16px', 
+                borderRadius: '12px' 
+              }}>
                 <Text as="h3" variant="headingMd">
                   {column}
                 </Text>

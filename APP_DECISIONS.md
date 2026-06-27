@@ -20,15 +20,15 @@ The **NexusLab Shopify App** serves two major functions:
   - **Automated Webhooks:** `orders/paid` webhooks are caught to automatically inject new orders into the queue, but this is filtered via an `appSettingsTable` to ensure only specific "trigger" products create a build job.
   - **Manual Fallback:** A manual order lookup search bar was added to the UI using the Admin GraphQL API. To maintain velocity and avoid requiring `read_customers` scopes from Shopify, the customer lookup was intentionally omitted from this search query since `customerId` is an optional field in our local database.
 - **Scoring System:** The `rankScore` is calculated using a weighted formula: `(Units * 10) + (Revenue / 100) + (Views * 0.1)`. This normalizes cheap high-volume items against expensive low-volume items (like GPUs).
-- **Batch Processing:** Instead of recalculating the leaderboard on every page load, `calculateRankings()` is designed to run periodically or after a simulated batch update.
+- **Real-Time Recalculation:** Leaderboard rankings are automatically updated in real-time within the webhook flow whenever a new paid order triggers the `webhooks.orders.paid` endpoint.
 
 ## 4. Tradeoffs
-- **Simulation vs. Real-Time Webhooks:** Implementing the `orders/create` webhook requires strict "Protected Customer Data" scopes from Shopify. To maintain development velocity, we built a "Simulate Sale" UI tool. This trades immediate real-world tracking for a frictionless development experience until the app clears Shopify's compliance checks.
+- **Real-Time Webhooks:** Implementing the `orders/paid` webhook enables real-time sales tracking, build job triggers, and automatic ranking recalculations, ensuring accurate, live data without relying on a simulation tool.
 - **Local SQLite vs Hosted MySQL:** We configured Drizzle for a local MySQL container (`nexuslab_app`) to replicate a production database environment rather than relying on a flat SQLite file. This adds slight setup overhead but guarantees data integrity and connection pooling under load.
 - **Admin GraphQL vs Storefront API:** We used the Admin GraphQL API to sync products because it bypasses channel availability constraints. However, it requires offline access tokens, making the initial sync slightly heavier than a public Storefront query.
 
 ## 5. What I'd Improve With More Time
-1. **Live Webhook Integration:** Once Shopify grants the Customer Data scopes, I would fully implement the `orders/create` and `checkouts/create` webhooks to process sales metrics passively in the background.
+1. **Checkout Webhook Integration:** We could integrate `checkouts/create` webhooks to track abandoned checkouts or conversion rates for each PC bundle.
 2. **Time-Decayed Scoring (Trending Algorithm):** The current algorithm ranks all-time sales. I would implement a time-decay factor (e.g., heavily weighting sales from the last 7 days) to create a true "Trending Now" leaderboard rather than a static "All Time Bestsellers" list.
 3. **Redis Caching:** For the Theme App Extension (Storefront), hitting the MySQL database on every customer page load isn't scalable. I would implement Redis to cache the top 10 leaderboard and invalidate it only when rankings actually shift.
-4. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion..
+4. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion.
