@@ -24,11 +24,13 @@ The **NexusLab Shopify App** serves two major functions:
 
 ## 4. Tradeoffs
 - **Real-Time Webhooks:** Implementing the `orders/paid` webhook enables real-time sales tracking, build job triggers, and automatic ranking recalculations, ensuring accurate, live data without relying on a simulation tool.
+- **Embedded Shopify App vs. Standalone Admin Portal:** The application is built as an embedded Shopify App, relying on Shopify Admin credentials for staff/owner access. While this provides a native dashboard experience, it means the merchant cannot delegate app management (like the Kanban build queue) to clients or external operators without granting them access to their Shopify Admin. A standalone administration panel with independent authentication was traded off for development speed.
 - **Local SQLite vs Hosted MySQL:** We configured Drizzle for a local MySQL container (`nexuslab_app`) to replicate a production database environment rather than relying on a flat SQLite file. This adds slight setup overhead but guarantees data integrity and connection pooling under load.
 - **Admin GraphQL vs Storefront API:** We used the Admin GraphQL API to sync products because it bypasses channel availability constraints. However, it requires offline access tokens, making the initial sync slightly heavier than a public Storefront query.
 
 ## 5. What I'd Improve With More Time
-1. **Checkout Webhook Integration:** We could integrate `checkouts/create` webhooks to track abandoned checkouts or conversion rates for each PC bundle.
-2. **Time-Decayed Scoring (Trending Algorithm):** The current algorithm ranks all-time sales. I would implement a time-decay factor (e.g., heavily weighting sales from the last 7 days) to create a true "Trending Now" leaderboard rather than a static "All Time Bestsellers" list.
-3. **Redis Caching:** For the Theme App Extension (Storefront), hitting the MySQL database on every customer page load isn't scalable. I would implement Redis to cache the top 10 leaderboard and invalidate it only when rankings actually shift.
-4. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion.
+1. **Standalone Admin Dashboard with Custom Auth:** Build an external web portal/admin panel with custom login (e.g., JWT-based or email/password authentication) for clients, staff, and owners. This would allow them to manage the PC build queue and view leaderboards without requiring direct access to the Shopify Admin dashboard.
+2. **Checkout Webhook Integration:** We could integrate `checkouts/create` webhooks to track abandoned checkouts or conversion rates for each PC bundle.
+3. **Time-Decayed Scoring (Trending Algorithm):** The current algorithm ranks all-time sales. I would implement a time-decay factor (e.g., heavily weighting sales from the last 7 days) to create a true "Trending Now" leaderboard rather than a static "All Time Bestsellers" list.
+4. **Redis Caching:** For the Theme App Extension (Storefront), hitting the MySQL database on every customer page load isn't scalable. I would implement Redis to cache the top 10 leaderboard and invalidate it only when rankings actually shift.
+5. **Automated Promos:** If an "S-Tier" product drops to "B-Tier", the app should automatically trigger a Shopify Discount Code and notify the admin to run a promotion.
